@@ -1,0 +1,109 @@
+# Project is to make Student Management Program.
+
+students = {}
+
+
+while True:
+
+    print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+    print("1. Add Student")
+    print("2. Delete Student")
+    print("3. Update Marks")
+    print("4. Search Student")
+    print("5. Display All Students")
+    print("6. Calculate Average Marks")
+    print("7. Exit")
+
+    choice = int(input("Enter your choice: "))
+
+
+    # 1. Add Student
+    if choice == 1:
+
+        name = input("Enter student name: ")
+        marks = float(input("Enter marks: "))
+
+        students[name] = marks
+
+        print("Student added successfully!")
+
+
+    # 2. Delete Student
+    elif choice == 2:
+
+        name = input("Enter student name to delete: ")
+
+        if name in students:
+            del students[name]
+            print("Student deleted successfully!")
+        else:
+            print("Student not found!")
+
+
+    # 3. Update Marks
+    elif choice == 3:
+
+        name = input("Enter student name: ")
+
+        if name in students:
+
+            marks = float(input("Enter new marks: "))
+
+            students[name] = marks
+
+            print("Marks updated successfully!")
+
+        else:
+            print("Student not found!")
+
+
+    # 4. Search Student
+    elif choice == 4:
+
+        name = input("Enter student name to search: ")
+
+        if name in students:
+            print("Student found!")
+            print("Name:", name)
+            print("Marks:", students[name])
+        else:
+            print("Student not found!")
+
+
+    # 5. Display All Students
+    elif choice == 5:
+
+        if len(students) == 0:
+            print("No students available!")
+
+        else:
+
+            print("\n===== ALL STUDENTS =====")
+
+            for name, marks in students.items():
+                print("Name:", name, "| Marks:", marks)
+
+
+    # 6. Calculate Average Marks
+    elif choice == 6:
+
+        if len(students) == 0:
+            print("No students available!")
+
+        else:
+
+            total = sum(students.values())
+            average = total / len(students)
+
+            print("Average Marks:", average)
+
+
+    # 7. Exit
+    elif choice == 7:
+
+        print("Thank you for using Student Management System!")
+        break
+
+
+    else:
+        print("Invalid choice!")
